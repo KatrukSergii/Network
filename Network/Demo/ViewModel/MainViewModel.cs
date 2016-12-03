@@ -1,3 +1,8 @@
+using System;
+using System.Threading.Tasks;
+using System.Windows.Threading;
+using Common;
+using Common.Interface;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 
@@ -7,7 +12,7 @@ namespace Demo.ViewModel
     /// 
     /// </summary>
     /// <owner>Sergii Katruk</owner>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, ILogger<string>
     {
         private string textToSend;
         private string propgressText;
@@ -42,7 +47,29 @@ namespace Demo.ViewModel
 
         private void Send()
         {
-            this.PropgressText += this.TextToSend;
+            Client.UDP.Client udpClient = new Client.UDP.Client(this);
+            udpClient.Send(new Request(this.textToSend));
+        }
+
+        public void Log(string logItem)
+        {
+            this.PropgressText += logItem + Environment.NewLine;
+        }
+
+        public MainViewModel()
+        {
+            this.TextToSend = "Test";
+            Server.UDP.Server server = new Server.UDP.Server(this);
+            server.OnRequestRecieved += this.OnRequestRecieved;
+            Task.Run(() => server.Start());
+        }
+
+        private void OnRequestRecieved(object sender, Request e)
+        {
+            Dispatcher.CurrentDispatcher.Invoke(() =>
+            {
+                this.PropgressText += $"Received message: {e.Message}{Environment.NewLine}";
+            });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Common;
 using Server.Interface;
 
 namespace Server.TCP
@@ -26,5 +27,7 @@ namespace Server.TCP
         {
             throw new NotImplementedException();
         }
+
+        public event EventHandler<Request> OnRequestRecieved;
     }
 }

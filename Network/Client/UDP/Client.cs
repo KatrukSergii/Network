@@ -56,16 +56,15 @@ namespace Client.UDP
         public Response Send(Request request)
         {
             byte[] bytes = new byte[1024];
-            IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
-            IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
+            IPAddress ipAddress = IPAddress.Loopback;
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11001);
             Socket sender = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             // Connect the socket to the remote endpoint. Catch any errors.
             try
             {
                 sender.Connect(remoteEP);
 
-                this.logger.Log("Socket connected to {sender.RemoteEndPoint}");
+                this.logger.Log($"Socket connected to {sender.RemoteEndPoint}");
 
                 // Encode the data string into a byte array.
                 byte[] msg = request.GetBytes();

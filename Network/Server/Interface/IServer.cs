@@ -1,4 +1,5 @@
 ﻿using System;
+using Common;
 
 namespace Server.Interface
 {
@@ -19,5 +20,7 @@ namespace Server.Interface
         /// </summary>
         /// <owner>Sergii Katruk</owner>
         void Stop();
+
+        event EventHandler<Request> OnRequestRecieved;
     }
 }
