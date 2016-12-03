@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\ConnectionTimeout.cs" />
+    <Compile Include="Interface\ILogger.cs" />
+    <Compile Include="Interface\IRequest.cs" />
+    <Compile Include="NullStringLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Response.cs" />

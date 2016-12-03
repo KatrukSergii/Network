@@ -1,4 +1,6 @@
 ﻿using System;
+using Common;
+using Common.Interface;
 
 namespace Client.Interface
 {
@@ -24,6 +26,8 @@ namespace Client.Interface
         /// Sends this instance.
         /// </summary>
         /// <owner>Sergii Katruk</owner>
-        void Send();
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        Response Send(Request request);
     }
 }

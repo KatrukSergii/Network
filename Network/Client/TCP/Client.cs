@@ -1,5 +1,7 @@
 ﻿using System;
 using Client.Interface;
+using Common;
+using Common.Interface;
 
 namespace Client.TCP
 {
@@ -27,11 +29,7 @@ namespace Client.TCP
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Sends this instance.
-        /// </summary>
-        /// <owner>Sergii Katruk</owner>
-        public void Send()
+        public Response Send(Request request)
         {
             throw new NotImplementedException();
         }

@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="650" Width="525"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        
-    </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Text to send:" Grid.Column="0" Grid.Row="0"/>
+        <TextBox Text="{Binding Path=ViewModel.TextToSend}" Grid.Column="1" Grid.Row="0"/>
+        <Button Content="Send" Command="{Binding Path=ViewModel.SendCommand}" Grid.Column="0" Grid.Row="1"/>
+        <Label Content="Progress: " Grid.Column="0" Grid.Row="2"/>
+        <TextBlock Text="{Binding Path=ViewModel.PropgressText, UpdateSourceTrigger=PropertyChanged}" 
+               Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" TextWrapping="Wrap" 
+                   ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        </Grid>
 </Window>
