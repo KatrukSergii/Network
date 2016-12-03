@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.UnitTests", "Client.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{F355B0AC-3ADA-4BEA-8DBF-16BBFDF6B3F0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{705B1955-6687-407A-85A1-425FEDD8550A}"
+	ProjectSection(SolutionItems) = preProject
+		UML\UML-diagrams.vsdx = UML\UML-diagrams.vsdx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
