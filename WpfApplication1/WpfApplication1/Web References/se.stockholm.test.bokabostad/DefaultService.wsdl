@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bokabostad.stockholm.se/Bostoc2005/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bokabostad.stockholm.se/Bostoc2005/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inlämning av lägenheter. Förutsätter att bolaget har ett konto hos Bostadsförmedlingen.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bokabostad.stockholm.se/Bostoc2005/">
+      <s:element name="GatuadressList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gatunamn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="gatunummer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="postnummer" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GatuadressListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GatuadressListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TillgangligaKokstyperList">
+        <s:complexType />
+      </s:element>
+      <s:element name="TillgangligaKokstyperListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TillgangligaKokstyperListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TillgangligaBadrumstyperList">
+        <s:complexType />
+      </s:element>
+      <s:element name="TillgangligaBadrumstyperListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TillgangligaBadrumstyperListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TillgangligaHisstyperList">
+        <s:complexType />
+      </s:element>
+      <s:element name="TillgangligaHisstyperListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TillgangligaHisstyperListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TillgangligaBalkongtyperList">
+        <s:complexType />
+      </s:element>
+      <s:element name="TillgangligaBalkongtyperListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TillgangligaBalkongtyperListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TillgangligaBeskrivningstyperList">
+        <s:complexType />
+      </s:element>
+      <s:element name="TillgangligaBeskrivningstyperListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TillgangligaBeskrivningstyperListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RelateradeBolag">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="organisationsnummer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="losenord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fastighetsagareOrgnr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="forvaltningsbolagOrgnr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RelateradeBolagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RelateradeBolagResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StandardkravList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="organisationsnummer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="losenord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fastighetsagareOrgnr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StandardkravListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StandardkravListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LagenhetInsert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="organisationsnummer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="losenord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lagenhetsnummer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="gatuadressId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fastighetstyp" type="tns:FastighetsTyp" />
+            <s:element minOccurs="1" maxOccurs="1" name="lagenhetstyp" type="tns:LägenhetTyp" />
+            <s:element minOccurs="0" maxOccurs="1" name="fastighetsagareOrgnr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="forvaltningsbolagOrgnr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="kontaktperson" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="antalRum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="yta" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="hyra" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="vaning" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="kokstypId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="badrumstypId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="hisstypId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="balkongtypId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="beskrivningstypId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="beskrivning" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lghbild" type="tns:ArrayOfBildObjekt" />
+            <s:element minOccurs="0" maxOccurs="1" name="lghurl" type="tns:ArrayOfUrlObjekt" />
+            <s:element minOccurs="1" maxOccurs="1" name="inflyttningsdatum" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="senasteforslagsdatum" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="kravId" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="internVisningsinformation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="internNotering" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="avseddForKo" type="tns:Kö" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FastighetsTyp">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ingen" />
+          <s:enumeration value="Succession" />
+          <s:enumeration value="Nyproduktion" />
+          <s:enumeration value="Ombyggnation" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LägenhetTyp">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ingen" />
+          <s:enumeration value="Hyresrätt" />
+          <s:enumeration value="Korttidskontrakt" />
+          <s:enumeration value="Ungdomslägenhet" />
+          <s:enumeration value="Studentlägenhet" />
+          <s:enumeration value="SeniorbostadMin55" />
+          <s:enumeration value="SeniorbostadMin65" />
+          <s:enumeration value="Handikappanpassad" />
+          <s:enumeration value="Allergianpassad" />
+          <s:enumeration value="Ateljelägenhet" />
+          <s:enumeration value="Kollektivhuslägenhet" />
+          <s:enumeration value="Pensionärslägenhet" />
+          <s:enumeration value="Hyresradhus" />
+          <s:enumeration value="Studentkorridor" />
+          <s:enumeration value="Trygghetsboende" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBildObjekt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BildObjekt" nillable="true" type="tns:BildObjekt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BildObjekt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Beskrivning" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filnamn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fil" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUrlObjekt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UrlObjekt" nillable="true" type="tns:UrlObjekt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UrlObjekt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Beskrivning" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Kö">
+        <s:restriction base="s:string">
+          <s:enumeration value="Alla" />
+          <s:enumeration value="Bostadskön" />
+          <s:enumeration value="Huddingekön" />
+          <s:enumeration value="HusbyMandamuskön" />
+          <s:enumeration value="Vallentunakön" />
+          <s:enumeration value="Hebakön" />
+          <s:enumeration value="Arbetarebostadsfondskön" />
+          <s:enumeration value="FondenUngdom" />
+          <s:enumeration value="Botkyrkakön" />
+          <s:enumeration value="Internkön" />
+          <s:enumeration value="SveboStudent" />
+          <s:enumeration value="VasakronanStudent" />
+          <s:enumeration value="TrygghetsboendeStockholm" />
+          <s:enumeration value="Värmdökön" />
+          <s:enumeration value="Bovivakön" />
+          <s:enumeration value="JohnMattsonkön" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="LagenhetInsertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LagenhetInsertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HyresgastforslagSvarUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="organisationsnummer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="losenord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="hyresgastforslagId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="godkannande" type="tns:Svar" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivering" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Svar">
+        <s:restriction base="s:string">
+          <s:enumeration value="Inget" />
+          <s:enumeration value="Ja" />
+          <s:enumeration value="Nej" />
+          <s:enumeration value="Avhopp" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="HyresgastforslagSvarUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HyresgastforslagSvarUpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HyresgastforslagGetDokument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="organisationsnummer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="losenord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="hyresgastforslagId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dokumentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HyresgastforslagGetDokumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HyresgastforslagGetDokumentResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DirektInloggning">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="organisationsnummer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="losenord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lagenhetsnummer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DirektInloggningResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DirektInloggningResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HyresgastforslagFranBF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HyresgastforslagFranBFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HyresgastforslagFranBFResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GatuadressListSoapIn">
+    <wsdl:part name="parameters" element="tns:GatuadressList" />
+  </wsdl:message>
+  <wsdl:message name="GatuadressListSoapOut">
+    <wsdl:part name="parameters" element="tns:GatuadressListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaKokstyperListSoapIn">
+    <wsdl:part name="parameters" element="tns:TillgangligaKokstyperList" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaKokstyperListSoapOut">
+    <wsdl:part name="parameters" element="tns:TillgangligaKokstyperListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaBadrumstyperListSoapIn">
+    <wsdl:part name="parameters" element="tns:TillgangligaBadrumstyperList" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaBadrumstyperListSoapOut">
+    <wsdl:part name="parameters" element="tns:TillgangligaBadrumstyperListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaHisstyperListSoapIn">
+    <wsdl:part name="parameters" element="tns:TillgangligaHisstyperList" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaHisstyperListSoapOut">
+    <wsdl:part name="parameters" element="tns:TillgangligaHisstyperListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaBalkongtyperListSoapIn">
+    <wsdl:part name="parameters" element="tns:TillgangligaBalkongtyperList" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaBalkongtyperListSoapOut">
+    <wsdl:part name="parameters" element="tns:TillgangligaBalkongtyperListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaBeskrivningstyperListSoapIn">
+    <wsdl:part name="parameters" element="tns:TillgangligaBeskrivningstyperList" />
+  </wsdl:message>
+  <wsdl:message name="TillgangligaBeskrivningstyperListSoapOut">
+    <wsdl:part name="parameters" element="tns:TillgangligaBeskrivningstyperListResponse" />
+  </wsdl:message>
+  <wsdl:message name="RelateradeBolagSoapIn">
+    <wsdl:part name="parameters" element="tns:RelateradeBolag" />
+  </wsdl:message>
+  <wsdl:message name="RelateradeBolagSoapOut">
+    <wsdl:part name="parameters" element="tns:RelateradeBolagResponse" />
+  </wsdl:message>
+  <wsdl:message name="StandardkravListSoapIn">
+    <wsdl:part name="parameters" element="tns:StandardkravList" />
+  </wsdl:message>
+  <wsdl:message name="StandardkravListSoapOut">
+    <wsdl:part name="parameters" element="tns:StandardkravListResponse" />
+  </wsdl:message>
+  <wsdl:message name="LagenhetInsertSoapIn">
+    <wsdl:part name="parameters" element="tns:LagenhetInsert" />
+  </wsdl:message>
+  <wsdl:message name="LagenhetInsertSoapOut">
+    <wsdl:part name="parameters" element="tns:LagenhetInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="HyresgastforslagSvarUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:HyresgastforslagSvarUpdate" />
+  </wsdl:message>
+  <wsdl:message name="HyresgastforslagSvarUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:HyresgastforslagSvarUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="HyresgastforslagGetDokumentSoapIn">
+    <wsdl:part name="parameters" element="tns:HyresgastforslagGetDokument" />
+  </wsdl:message>
+  <wsdl:message name="HyresgastforslagGetDokumentSoapOut">
+    <wsdl:part name="parameters" element="tns:HyresgastforslagGetDokumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DirektInloggningSoapIn">
+    <wsdl:part name="parameters" element="tns:DirektInloggning" />
+  </wsdl:message>
+  <wsdl:message name="DirektInloggningSoapOut">
+    <wsdl:part name="parameters" element="tns:DirektInloggningResponse" />
+  </wsdl:message>
+  <wsdl:message name="HyresgastforslagFranBFSoapIn">
+    <wsdl:part name="parameters" element="tns:HyresgastforslagFranBF" />
+  </wsdl:message>
+  <wsdl:message name="HyresgastforslagFranBFSoapOut">
+    <wsdl:part name="parameters" element="tns:HyresgastforslagFranBFResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DefaultServiceSoap">
+    <wsdl:operation name="GatuadressList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrerade adresser.</wsdl:documentation>
+      <wsdl:input message="tns:GatuadressListSoapIn" />
+      <wsdl:output message="tns:GatuadressListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaKokstyperList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">egenskap_id för lägenhetsregistrering.</wsdl:documentation>
+      <wsdl:input message="tns:TillgangligaKokstyperListSoapIn" />
+      <wsdl:output message="tns:TillgangligaKokstyperListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBadrumstyperList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">egenskap_id för lägenhetsregistrering.</wsdl:documentation>
+      <wsdl:input message="tns:TillgangligaBadrumstyperListSoapIn" />
+      <wsdl:output message="tns:TillgangligaBadrumstyperListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaHisstyperList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">egenskap_id för lägenhetsregistrering.</wsdl:documentation>
+      <wsdl:input message="tns:TillgangligaHisstyperListSoapIn" />
+      <wsdl:output message="tns:TillgangligaHisstyperListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBalkongtyperList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">egenskap_id för lägenhetsregistrering.</wsdl:documentation>
+      <wsdl:input message="tns:TillgangligaBalkongtyperListSoapIn" />
+      <wsdl:output message="tns:TillgangligaBalkongtyperListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBeskrivningstyperList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">egenskap_id för lägenhetsregistrering.</wsdl:documentation>
+      <wsdl:input message="tns:TillgangligaBeskrivningstyperListSoapIn" />
+      <wsdl:output message="tns:TillgangligaBeskrivningstyperListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RelateradeBolag">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrerade förvaltningsbolag (fastighetsägare_id).</wsdl:documentation>
+      <wsdl:input message="tns:RelateradeBolagSoapIn" />
+      <wsdl:output message="tns:RelateradeBolagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StandardkravList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrerade krav_id för lägenhetsregistrering.</wsdl:documentation>
+      <wsdl:input message="tns:StandardkravListSoapIn" />
+      <wsdl:output message="tns:StandardkravListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LagenhetInsert">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inlämning av lägenhet.</wsdl:documentation>
+      <wsdl:input message="tns:LagenhetInsertSoapIn" />
+      <wsdl:output message="tns:LagenhetInsertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagSvarUpdate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrering av svar på hyresgästförslag (godkännande).</wsdl:documentation>
+      <wsdl:input message="tns:HyresgastforslagSvarUpdateSoapIn" />
+      <wsdl:output message="tns:HyresgastforslagSvarUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagGetDokument">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Arkiverade dokument (intyg etc).</wsdl:documentation>
+      <wsdl:input message="tns:HyresgastforslagGetDokumentSoapIn" />
+      <wsdl:output message="tns:HyresgastforslagGetDokumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DirektInloggning">
+      <wsdl:input message="tns:DirektInloggningSoapIn" />
+      <wsdl:output message="tns:DirektInloggningSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagFranBF">
+      <wsdl:input message="tns:HyresgastforslagFranBFSoapIn" />
+      <wsdl:output message="tns:HyresgastforslagFranBFSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DefaultServiceSoap" type="tns:DefaultServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GatuadressList">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/GatuadressList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaKokstyperList">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaKokstyperList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBadrumstyperList">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaBadrumstyperList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaHisstyperList">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaHisstyperList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBalkongtyperList">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaBalkongtyperList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBeskrivningstyperList">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaBeskrivningstyperList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelateradeBolag">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/RelateradeBolag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StandardkravList">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/StandardkravList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LagenhetInsert">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/LagenhetInsert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagSvarUpdate">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/HyresgastforslagSvarUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagGetDokument">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/HyresgastforslagGetDokument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DirektInloggning">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/DirektInloggning" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagFranBF">
+      <soap:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/HyresgastforslagFranBF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DefaultServiceSoap12" type="tns:DefaultServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GatuadressList">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/GatuadressList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaKokstyperList">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaKokstyperList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBadrumstyperList">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaBadrumstyperList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaHisstyperList">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaHisstyperList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBalkongtyperList">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaBalkongtyperList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TillgangligaBeskrivningstyperList">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/TillgangligaBeskrivningstyperList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelateradeBolag">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/RelateradeBolag" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StandardkravList">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/StandardkravList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LagenhetInsert">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/LagenhetInsert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagSvarUpdate">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/HyresgastforslagSvarUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagGetDokument">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/HyresgastforslagGetDokument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DirektInloggning">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/DirektInloggning" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HyresgastforslagFranBF">
+      <soap12:operation soapAction="http://bokabostad.stockholm.se/Bostoc2005/HyresgastforslagFranBF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DefaultService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inlämning av lägenheter. Förutsätter att bolaget har ett konto hos Bostadsförmedlingen.</wsdl:documentation>
+    <wsdl:port name="DefaultServiceSoap" binding="tns:DefaultServiceSoap">
+      <soap:address location="http://bokabostad.test.stockholm.se:4002/WebServices/Lagenhet/DefaultService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DefaultServiceSoap12" binding="tns:DefaultServiceSoap12">
+      <soap12:address location="http://bokabostad.test.stockholm.se:4002/WebServices/Lagenhet/DefaultService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

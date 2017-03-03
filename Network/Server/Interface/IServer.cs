@@ -21,6 +21,22 @@ namespace Server.Interface
         /// <owner>Sergii Katruk</owner>
         void Stop();
 
-        event EventHandler<Request> OnRequestRecieved;
+        /// <summary>
+        /// Occurs when received.
+        /// </summary>
+        /// <owner>Sergii Katruk</owner>
+        event EventHandler<Request> OnRequestReceived;
+
+        /// <summary>
+        /// Gets the options.
+        /// </summary>
+        /// <owner>Sergii Katruk</owner>
+        /// <value>
+        /// The options.
+        /// </value>
+        ServerOptions Options
+        {
+            get;
+        }
     }
 }
